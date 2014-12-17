@@ -404,6 +404,7 @@
         <module>defaultcamelcontext</module>
         <module>web-jetty</module>
         <module>web-tomcat</module>
+        <module>persistence</module>
     </modules>
 
 </project>
