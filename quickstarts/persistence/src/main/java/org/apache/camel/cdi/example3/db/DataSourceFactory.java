@@ -2,6 +2,7 @@ package org.apache.camel.cdi.example3.db;
 
 import org.h2.jdbcx.JdbcDataSource;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Named;
@@ -9,7 +10,10 @@ import javax.sql.DataSource;
 
 public class DataSourceFactory {
 
-    @Produces @DataSourceDefinition @Named("myDataSource")
+    @Produces
+    @ApplicationScoped
+    @DataSourceDefinition
+    @Named("myDataSource")
     public DataSource initDataSource(InjectionPoint injectionPoint) {
 
         DataSourceDefinition dsdef = injectionPoint.getAnnotated().getAnnotation(DataSourceDefinition.class);
