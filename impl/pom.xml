@@ -38,6 +38,12 @@
             <artifactId>camel-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core-osgi</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
         <!-- DeltaSpike is only used to provide Main support thus optional -->
         <dependency>
             <groupId>org.apache.deltaspike.core</groupId>
@@ -58,10 +64,16 @@
         <!-- provided dependencies -->
 
         <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
