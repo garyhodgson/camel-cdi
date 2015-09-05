@@ -26,12 +26,14 @@ import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import org.apache.camel.core.osgi.OsgiCamelContextHelper;
+import org.apache.camel.core.osgi.OsgiClassResolver;
 import org.apache.camel.core.osgi.OsgiComponentResolver;
 import org.apache.camel.core.osgi.OsgiDataFormatResolver;
 import org.apache.camel.core.osgi.OsgiFactoryFinderResolver;
 import org.apache.camel.core.osgi.OsgiTypeConverter;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.spi.FactoryFinder;
+import org.apache.camel.spi.FactoryFinderResolver;
 import org.apache.camel.spi.Injector;
 import org.apache.camel.spi.Registry;
 import org.osgi.framework.Bundle;
@@ -71,6 +73,8 @@ public class CdiCamelContext extends DefaultCamelContext {
                 FactoryFinder finder = new OsgiFactoryFinderResolver(bundleContext).resolveDefaultFactoryFinder(getClassResolver());
                 setTypeConverter(new OsgiTypeConverter(bundleContext, injector, finder));
                 setDataFormatResolver(new OsgiDataFormatResolver(bundleContext));
+
+                setClassResolver(new OsgiClassResolver(this, bundleContext));
             }
         }
 
